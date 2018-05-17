@@ -20,12 +20,14 @@ func (s *ProxyServer) handleLoginRPC(cs *Session, params []string, id string) (b
 		return false, &ErrorReply{Code: -1, Message: "Invalid params"}
 	}
 
+	//Parse email Id here
+	//TODO: LOGIN CHECK OF VALID ID
 	login := strings.ToLower(params[0])
 	if !util.IsValidHexAddress(login) {
 		return false, &ErrorReply{Code: -1, Message: "Invalid login"}
 	}
 	if !s.policy.ApplyLoginPolicy(login, cs.ip) {
-		return false, &ErrorReply{Code: -1, Message: "You are blacklisted"}
+		return false, &ErrorReply{Code: -1, Message: "You are blacklisted, please contact helpdesk with your details"}
 	}
 	cs.login = login
 	s.registerSession(cs)
@@ -74,7 +76,10 @@ func (s *ProxyServer) handleSubmitRPC(cs *Session, login, id string, params []st
 
 	if exist {
 		log.Printf("Duplicate share from %s@%s %v", login, cs.ip, params)
-		return false, &ErrorReply{Code: 22, Message: "Duplicate share"}
+		if !ok {
+			return false, &ErrorReply{Code: 23, Message: "Duplicate share"}
+		}
+		return false, nil
 	}
 
 	if !validShare {

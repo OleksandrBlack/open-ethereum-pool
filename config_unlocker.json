@@ -1,0 +1,53 @@
+{
+	"threads": 2,
+	"coin": "etc",
+	"name": "ethunlocker",
+	"pplns": 1000,
+	"coin-name":"ETC",
+
+	"upstreamCheckInterval": "5s",
+	"upstream": [
+		{
+			"name": "main",
+			"url": "http://127.0.0.1:8545",
+			"timeout": "10s"
+		},
+		{
+			"name": "backup",
+			"url": "http://127.0.0.1:8545",
+			"timeout": "10s"
+		}
+	],
+
+	"redis": {
+		"endpoint": "127.0.0.1:6379",
+		"poolSize": 100,
+		"database": 0,
+		"password": ""
+	},
+
+	"unlocker": {
+		"enabled": true,
+		"poolFee": 0.5,
+		"poolFeeAddress": "",
+		"donate": false,
+		"depth": 120,
+		"immatureDepth": 20,
+		"keepTxFees": false,
+		"interval": "10m",
+		"daemon": "http://127.0.0.1:8545",
+		"timeout": "10s"
+	},
+
+	"exchange": {
+		"enabled": false,
+		"url": "https://api.coinmarketcap.com/v1/ticker/?convert=USD&limit=10",
+		"timeout": "50s",
+		"refreshInterval": "1800s"
+		},
+
+	"newrelicEnabled": false,
+	"newrelicName": "UNLOCKER",
+	"newrelicKey": "b30cd005408cbe2bcef6e081dc0a7ea2fe6c6a18",
+	"newrelicVerbose": true
+}

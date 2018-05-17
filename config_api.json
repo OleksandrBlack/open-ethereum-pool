@@ -1,0 +1,57 @@
+{
+	"threads": 4,
+	"coin": "etc",
+	"name": "ethapi",
+	"pplns": 1000,
+	"coin-name":"ETC",
+
+	"api": {
+		"enabled": true,
+		"purgeOnly": false,
+		"purgeInterval": "10m",
+		"listen": "0.0.0.0:8080",
+		"statsCollectInterval": "10s",
+		"hashrateWindow": "30m",
+		"hashrateLargeWindow": "12h",
+		"luckWindow": [100, 500, 1000],
+		"payments": 100,
+		"blocks": 100,
+		"poolCharts":"0 */20 * * * *",
+		"poolChartsNum":74,
+		"minerCharts":"0 */20 * * * *",
+		"minerChartsNum":74
+	},
+
+	"upstreamCheckInterval": "5s",
+	"upstream": [
+		{
+			"name": "main",
+			"url": "http://127.0.0.1:8545",
+			"timeout": "10s"
+		},
+		{
+			"name": "backup",
+			"url": "http://127.0.0.1:8545",
+			"timeout": "10s"
+		}
+	],
+
+	"redis": {
+		"endpoint": "127.0.0.1:6379",
+		"poolSize": 100,
+		"database": 0,
+		"password": ""
+	},
+
+	"exchange": {
+		"enabled": true,
+		"url": "https://api.coinmarketcap.com/v1/ticker/?convert=USD&limit=10",
+		"timeout": "50s",
+		"refreshInterval": "1800s"
+		},
+
+	"newrelicEnabled": true,
+	"newrelicName": "API",
+	"newrelicKey": "b30cd005408cbe2bcef6e081dc0a7ea2fe6c6a18",
+	"newrelicVerbose": true
+}

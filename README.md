@@ -1,10 +1,8 @@
-## Open Source Ethereum Classic Mining Pool
+## Open Source Ethereum Mining Pool
 
-![Miner's stats page](https://s22.postimg.io/4rb17sqfl/2016_08_27_12_13_25_Fotos.png)
+![Miner's stats page](https://15254b2dcaab7f5478ab-24461f391e20b7336331d5789078af53.ssl.cf1.rackcdn.com/ethereum.vanillaforums.com/editor/pe/cf77cki0pjpt.png)
 
 [![Join the chat at https://gitter.im/sammy007/open-ethereum-pool](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sammy007/open-ethereum-pool?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/sammy007/open-ethereum-pool.svg?branch=develop)](https://travis-ci.org/sammy007/open-ethereum-pool) [![Go Report Card](https://goreportcard.com/badge/github.com/OleksandrBlack/open-ethereum-pool)](https://goreportcard.com/report/github.com/OleksandrBlack/open-ethereum-pool)
-
-Pools running with this fork: [EthTeam.com](http://www.ethteam.com)
 
 [List Of Open Ethereum Pools](https://github.com/OleksandrBlack/open-ethereum-pool/wiki/List-Of-Open-Pools)
 
@@ -29,10 +27,10 @@ Pools running with this fork: [EthTeam.com](http://www.ethteam.com)
 
 Dependencies:
 
-  * go >= 1.5
-  * geth
+  * go >= 1.6
+  * geth or parity
   * redis-server >= 2.8.0
-  * nodejs
+  * nodejs >= 4 LTS
   * nginx
 
 **I highly recommend to use Ubuntu 16.04 LTS.**
@@ -41,6 +39,7 @@ First install  [go-ethereum](https://github.com/ethereum/go-ethereum/wiki/Instal
 
 Clone & compile:
 
+    git config --global http.https://gopkg.in.followRedirects true
     git clone https://github.com/OleksandrBlack/open-ethereum-pool.git
     cd open-ethereum-pool
     make
@@ -55,7 +54,7 @@ You can use Ubuntu upstart - check for sample config in <code>upstart.conf</code
 
 ### Building Frontend
 
-Install nodejs. I suggest using LTS version >= 4.x from https://github.com/nodesource/distributions or from your Linux distribution.
+Install nodejs. I suggest using LTS version >= 4.x from https://github.com/nodesource/distributions or from your Linux distribution or simply install nodejs on Ubuntu Xenial 16.04.
 
 The frontend is a single-page Ember.js application that polls the pool API to render miner stats.
 
@@ -63,7 +62,7 @@ The frontend is a single-page Ember.js application that polls the pool API to re
 
 Change <code>ApiUrl: '//example.net/'</code> in <code>www/config/environment.js</code> to match your domain name. Also don't forget to adjust other options.
 
-    npm install -g ember-cli@2.4.3
+    npm install -g ember-cli@2.9.1
     npm install -g bower
     npm install
     bower install
@@ -319,6 +318,4 @@ Made by sammy007. Licensed under GPLv3.
 
 [Alex Leverington](https://github.com/subtly)
 
-### Donations
 
-Coming Soon: ethereum contract and p2sh script. Please contact subtly on gitter if you would like to donate.

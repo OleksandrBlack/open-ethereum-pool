@@ -38,7 +38,7 @@ func (self PayoutsConfig) GasHex() string {
 }
 
 func (self PayoutsConfig) GasPriceHex() string {
-	x := util.String2Big(self.Gas)
+	x := util.String2Big(self.GasPrice)
 	return hexutil.EncodeBig(x)
 }
 
@@ -120,7 +120,7 @@ func (u *PayoutsProcessor) process() {
 		amount, _ := u.backend.GetBalance(login)
 		amountInShannon := big.NewInt(amount)
 
-		ptresh, _ := u.backend.GetTreshold(login)
+		ptresh, _ := u.backend.GetThreshold(login)
 		if(ptresh <= 10) {
 			ptresh = u.config.Threshold
 		}

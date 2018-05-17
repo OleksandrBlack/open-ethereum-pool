@@ -2,6 +2,8 @@
 	"threads": 2,
 	"coin": "eth",
 	"name": "main",
+	"pplns": 1000,
+    "coin-name":"ETH",
 
 	"proxy": {
 		"enabled": true,
@@ -9,7 +11,7 @@
 		"limitHeadersSize": 1024,
 		"limitBodySize": 256,
 		"behindReverseProxy": false,
-		"blockRefreshInterval": "120ms",
+		"blockRefreshInterval": "300ms",
 		"stateUpdateInterval": "3s",
 		"difficulty": 2000000000,
 		"hashrateExpiration": "3h",
@@ -20,6 +22,13 @@
 		"stratum": {
 			"enabled": true,
 			"listen": "0.0.0.0:8008",
+			"timeout": "120s",
+			"maxConn": 8192
+		},
+
+		"stratum_nice_hash": {
+			"enabled": true,
+			"listen": "0.0.0.0:8088",
 			"timeout": "120s",
 			"maxConn": 8192
 		},
@@ -75,7 +84,7 @@
 
 	"redis": {
 		"endpoint": "127.0.0.1:6379",
-		"poolSize": 10,
+		"poolSize": 100,
 		"database": 0,
 		"password": ""
 	},
@@ -106,6 +115,14 @@
 		"threshold": 500000000,
 		"bgsave": false
 	},
+
+	"exchange": {
+		"enabled": true,
+		"name": "ETH_INR",
+		"url": "https://ethexindia.com/api/",
+		"timeout": "10s",
+		"refreshInterval": "120s"
+		},
 
 	"newrelicEnabled": false,
 	"newrelicName": "MyEtherProxy",
